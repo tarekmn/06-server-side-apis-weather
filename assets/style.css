@@ -1,14 +1,20 @@
 
 #weatherDashboard {
-  background-color: blue;
+  background-color: rgba(30, 30, 187, 0.83);
   color: white;
   height: 55px;
   text-align: center;
+  font-size: 30px;
   
 
 }
 
 #mainArea {
   outline: 1px black solid;
- 
+  
+}
+
+button {
+  background-color:rgba(30, 30, 187, 0.83);
+  color: white;
 }
