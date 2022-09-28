@@ -5,7 +5,7 @@ const now = moment().format('l');
 
 //Element Selectors 
 let searchButton = document.getElementById('searchButton');
-let input= document.getElementById('formInput')
+let input = document.getElementById('formInput')
 let appendHere = document.getElementById('whereToAppend');
 let mainWeather = document.getElementById("apiHeader");
 let mainArea = document.getElementById('mainArea');
@@ -20,14 +20,16 @@ let savedCity = document.getElementsByClassName('savedButton')
 
 //Function to console log saved cities, will later update
 function retrieveArray() {
+  // localStorage.clear();
   var locate = JSON.parse(localStorage.getItem("city"))
   console.log(locate)
 
+
   for (let index = 0; index < locate.length; index++) {
-    savedCity[index].textContent= locate[index]
-    
+    savedCity[index].textContent = locate[index]
+
   }
-  
+
 
 }
 
@@ -53,14 +55,20 @@ function getApi(event) {
 
       // This is the main page display
       let city = data.city.name
-      let temp= ((data.list[0].main.temp-273.15)*1.8)+32
-      let wind= data.list[0].wind.speed
+      let temp = ((data.list[0].main.temp - 273.15) * 1.8) + 32
+      let wind = data.list[0].wind.speed
       let humidity = data.list[0].main.humidity
       let icon = data.list[0].weather[0].icon
       let dataArray = []
 
+      let imagetag = document.createElement('img')
+      imagetag.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`)
+
+      document.getElementById("mainAreaM").appendChild(imagetag)
+      console.log(imagetag)
+
       //assigning the values to main page
-      mainWeather.textContent = city + " " + now + icon;
+      mainWeather.textContent = city + " " + now //+ Image;
       mainTemp.textContent = "Temp: " + temp.toFixed(2) + " °F";
       mainWind.textContent = "Wind: " + wind + " MPH";
       mainHumidity.textContent = "Humidity: " + humidity + "%";
@@ -77,16 +85,29 @@ function getApi(event) {
       for (let index = 0; index < dataArray.length; index++) {
         //console.log(index)
 
-        let apiHeaderi = document.getElementById(`day`+ index)
-        let tempi = document.getElementById(`temp`+index);
-        let windi = document.getElementById(`wind`+ index);
-        let humidityi = document.getElementById(`humidity`+ index);
-        let tempy = ((dataArray[index].main.temp-273.15)*1.8)+32
+        let apiHeaderi = document.getElementById(`day` + index)
+        let tempi = document.getElementById(`temp` + index);
+        let windi = document.getElementById(`wind` + index);
+        let humidityi = document.getElementById(`humidity` + index);
+        let tempy = ((dataArray[index].main.temp - 273.15) * 1.8) + 32
 
-        apiHeaderi.textContent= moment().add(index +1, 'days').format('l') //date
-        tempi.textContent= "Temp: " + tempy.toFixed(2) + " °F"
-        windi.textContent= "Wind: " + dataArray[index].wind.speed+ " MPH"
-        humidityi.textContent= "Humidity: " + dataArray[index].main.humidity + "%"
+        //creating images within 5 day
+        let iconi = dataArray[index].weather[0].icon
+        let imagetagi = document.getElementById('mainArea'+ index)
+      imagetagi.setAttribute("src", `http://openweathermap.org/img/wn/${iconi}@2x.png`)
+
+      // document.getElementById("mainArea" + index).appendChild(imagetagi)
+
+      // document.body.appendChild(imagetagi)
+      console.log(imagetagi)
+
+
+        apiHeaderi.textContent = moment().add(index + 1, 'days').format('l') //date
+        tempi.textContent = "Temp: " + tempy.toFixed(2) + " °F"
+        windi.textContent = "Wind: " + dataArray[index].wind.speed + " MPH"
+        humidityi.textContent = "Humidity: " + dataArray[index].main.humidity + "%"
+
+
 
         // document.body.appendChild(apiHeaderi);
         // document.body.appendChild(tempi);
@@ -104,12 +125,12 @@ function getApi(event) {
       //Creating a new array of saved cities, pushing to local storage. Then retrieving
       localStorageArray.push(city)
       localStorage.setItem("city", JSON.stringify(localStorageArray));
-      
-      
-      
+
+
+
     });
 
-    retrieveArray()
+  retrieveArray()
 
 }
 
