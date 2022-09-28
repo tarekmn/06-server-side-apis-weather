@@ -9,12 +9,28 @@
 
 }
 
-#mainArea {
+/*hidden */
+.mainAreaX {
+  display: none;
+}
+
+/* un hidden */
+.mainArea {
   outline: 1px black solid;
-  
+  background-color: rgba(30, 30, 187, 0.83) ;
+  color: white;
+  border-radius: 10%;
 }
 
 button {
   background-color:rgba(30, 30, 187, 0.83);
   color: white;
+  
+}
+
+.savedButton {
+  background-color:gray;
+  color: white;
+  height: 30px;
+  border-radius: 10%;
 }
