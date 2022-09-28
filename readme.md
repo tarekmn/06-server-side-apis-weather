@@ -1,7 +1,7 @@
 # 06 Server-Side APIs: Weather Dashboard
 						
 ## Description
-My co-worker and I were talking about how busy we've been lately. We thought it would be a great idea to build out a daily planner. This planner would be color quoted for past hours (gray), present hours(red) and future hours(green). We wanted the planner to save text regardless of refreshing the page. I accomplished this by using HTML, CSS for the interface and JavaScript with JQuery DOM manipulation for the logic.
+My family and I are planning our annual winter trip abroad. We have several cities in mind but would like a convenient way to check the weather forecast for said cities. I decided to build out a weather dashboard that takes an input for city. From there it will show current day and five future days with all relevant weather info. I thought it would be fun to add an icon with the weather display. I accomplished this by using HTML, CSS for the interface and JavaScript with DOM manipulation for the logic.
 
 
  
@@ -17,14 +17,14 @@ This code does not require any installation. The HTML and Assets folders are pro
 ## Usage
 The following code base was uploaded to a URL using GitHub for your convivence. The following URL is:
 
-https://tarekmn.github.io/05-third-party-apis-scheduler/
+X
 
 
 In addition, I included screenshot below: 
 
 
-![screenshot #1](./assets/screenshot1.png)
-![screenshot #1](./assets/screenshot2.png)
+![screenshot #1](./assets/screenshot.png)
+
 
 
 
